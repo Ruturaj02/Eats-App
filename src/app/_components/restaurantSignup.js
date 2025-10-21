@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 
 const RestaurantSignup = () => {
@@ -13,7 +12,6 @@ const RestaurantSignup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    // Add signup logic here
     console.log(
       email,
       password,
@@ -23,21 +21,14 @@ const RestaurantSignup = () => {
       address,
       contactNumber
     );
-    let result = await fetch("http://localhost:3000/api/restaurant", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-        restaurantName,
-        city,
-        address,
-        contactNumber,
-      }),
+    let result = await fetch("http://localhost:3000/api/restaurant",{
+      method: 'POST',
+      body:JSON.stringify({email, password, restaurantName, city, address, contactNumber}),
     });
     result = await result.json();
     console.log(result);
-    if (result.success) {
-      alert("Restaurant registered successfully!");
+    if(result.success){
+      alert("Restaurant registered successfully");
     }
   };
   return (
@@ -101,7 +92,7 @@ const RestaurantSignup = () => {
           </div>
           <div className="input-wrapper">
             <input
-              type="number"
+              type="text"
               placeholder="Enter contact number"
               className="input-field"
               value={contactNumber}
