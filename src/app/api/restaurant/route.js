@@ -11,12 +11,10 @@ export async function GET() {
 }
 
 export async function POST(request) {
-    let payload = await request.json()
+    const payload=await request.json();
     await mongoose.connect(connectionStr);
     const restaurant = new restaurantSchema(payload);
     const result = await restaurant.save();
-    console.log(payload);
-    return NextResponse.json({ result , success:true });
-
+    console.log(result);
+    return NextResponse.json({ result,success:true });
 }
-

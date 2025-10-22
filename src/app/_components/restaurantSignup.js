@@ -21,14 +21,15 @@ const RestaurantSignup = () => {
       address,
       contactNumber
     );
-    let result = await fetch("http://localhost:3000/api/restaurant",{
-      method: 'POST',
-      body:JSON.stringify({email, password, restaurantName, city, address, contactNumber}),
-    });
-    result = await result.json();
-    console.log(result);
-    if(result.success){
-      alert("Restaurant registered successfully");
+    let response = await fetch("http://localhost:3000/api/restaurant",{
+        method: "POST",
+        body:JSON.stringify({email, password, restaurantName, city, address, contactNumber}),
+    })
+    response = await response.json();
+    console.log(response);
+    if(response.success){
+        // alert("Restaurant registered successfully");
+        console.log(response);
     }
   };
   return (
