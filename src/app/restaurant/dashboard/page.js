@@ -1,6 +1,14 @@
+import RestaurantHeader from "@/app/_components/RestaurantHeader"
+import "../style.css"
+
 const page = () => {
   return (
-    <div>page</div>
+    <>
+    <div>
+    <RestaurantHeader/>
+    <h1>Welcome to Dashboard Page</h1>
+    </div>
+    </>
   )
 }
 
