@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddFoodItem = () => {
+const AddFoodItem = (props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [path, setPath] = useState("");
@@ -8,7 +8,7 @@ const AddFoodItem = () => {
   const [error,setError] = useState(false);
 
   const handleAddFood = async () => {
-    console.log({ name, price, path, description });
+    // console.log({ name, price, path, description });
     if(!name || !price || !path || !description){
         setError(true);
         return false;
@@ -33,6 +33,7 @@ const AddFoodItem = () => {
     response = await response.json();
     if (response) {
       alert("Food item Added");
+      props.setAddItem(false);
     }else{
         alert("Not added food item");
     }
