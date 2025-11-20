@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [locations, setLocations] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [showLocations, setShowLocations] = useState(false);
 
   useEffect(() => {
     loadLocations();
+    loadRestaurants();
   }, []);
 
   const loadLocations = async () => {
@@ -21,12 +23,21 @@ export default function Home() {
       setLocations(response.result);
     }
   };
-  // console.log(locations);
-const handleListItem=(item)=>{
-  setSelectedLocation(item);
-  setShowLocations(false);
-}
 
+  const loadRestaurants = async () => {
+    let response = await fetch(`http://localhost:3000/api/customer`);
+    response = await response.json();
+    if (response.success) {
+      setRestaurants(response.result);
+    }
+  };
+
+  // console.log(restaurants);
+  // console.log(locations);
+  const handleListItem = (item) => {
+    setSelectedLocation(item);
+    setShowLocations(false);
+  };
 
   return (
     <div>
@@ -36,17 +47,18 @@ const handleListItem=(item)=>{
         <div className="input-wrapper">
           <input
             type="text"
-            onClick={()=>setShowLocations(true)}
+            onClick={() => setShowLocations(true)}
             value={selectedLocation}
             className="select-input"
             placeholder="Select place"
           />
           <ul className="location-list">
-            {showLocations && locations.map((item,i) => (
-              <li key={i} onClick={()=>handleListItem(item)}>
-                {item}
-              </li>
-            ))}
+            {showLocations &&
+              locations.map((item, i) => (
+                <li key={i} onClick={() => handleListItem(item)}>
+                  {item}
+                </li>
+              ))}
           </ul>
           <input
             type="text"
@@ -54,6 +66,22 @@ const handleListItem=(item)=>{
             placeholder="Enter food or restaurant name"
           />
         </div>
+      </div>
+      <div className="restaurant-list-container">
+        {restaurants.map((item, i) => (
+          <div key={i} className="restaurant-wrapper">
+            <div className="heading-wrapper">
+              <h3>{item.name}</h3>
+              <h5>Contact:{item.contactNumber}</h5>
+            </div>
+            <div className="address-wrapper">
+              <div>{item.city},</div>
+              <div className="address">
+                {item.address}, Email:{item.email}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
       <Footer />
     </div>
