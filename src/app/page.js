@@ -4,12 +4,14 @@ import { set } from "mongoose";
 import CustomerHeader from "./_components/CustomerHeader";
 import Footer from "./_components/Footer";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [locations, setLocations] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [showLocations, setShowLocations] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     loadLocations();
@@ -79,7 +81,7 @@ export default function Home() {
       </div>
       <div className="restaurant-list-container">
         {restaurants.map((item, i) => (
-          <div key={i} className="restaurant-wrapper">
+          <div key={i} onClick={()=>router.push(`explore/${item.name}?id=${item._id}`)} className="restaurant-wrapper">
             <div className="heading-wrapper">
               <h3>{item.name}</h3>
               <h5>Contact:{item.contactNumber}</h5>

@@ -92,7 +92,8 @@ table img {
   width: 80px;
 }
 
-.main-page-banner {
+.main-page-banner,
+.restaurant-page-banner {
   background-image: url("https://img.freepik.com/free-photo/top-view-fast-food-mix-mozzarella-sticks-club-sandwich-hamburger-mushroom-pizza-caesar-shrimp-salad-french-fries-ketchup-mayo-cheese-sauces-table_141793-3998.jpg?semt=ais_hybrid&w=740&q=80");
   height: 230px;
   text-align: center;
@@ -145,7 +146,6 @@ table img {
   cursor: pointer;
 }
 
-
 .restaurant-list-container {
   display: flex;
   flex-direction: row;
@@ -162,15 +162,59 @@ table img {
   border-radius: 5px;
   cursor: pointer;
 }
-.restaurant-wrapper .heading-wrapper , .restaurant-wrapper .address-wrapper{
+.restaurant-wrapper .heading-wrapper,
+.restaurant-wrapper .address-wrapper {
   padding-left: 15px;
   display: flex;
   justify-content: flex-start;
 }
-.restaurant-wrapper h5{
+.restaurant-wrapper h5 {
   margin-left: 15px;
 }
 
-.restaurant-wrapper .address{
+.restaurant-wrapper .address {
   margin-left: 5px;
+}
+
+.restaurant-page-banner h1 {
+  font-size: 65px;
+}
+
+.details-wrapper {
+  display: flex;
+  background-color: orange;
+}
+.details-wrapper h3 {
+  width: 50%;
+}
+
+.food-list-wrapper {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.food-list-wrapper .list-item {
+  color: orange;
+  font-weight: bold;
+  border-bottom: 1px solid;
+  padding: 20px;
+  display: flex;
+  text-transform: capitalize;
+}
+.food-list-wrapper .list-item .description {
+  font-weight: lighter;
+}
+
+.food-list-wrapper .list-item button {
+  color: #fff;
+  background-color: orange;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.food-list-wrapper .list-item img {
+  width: 100px;
+  padding-right: 20px;
 }
